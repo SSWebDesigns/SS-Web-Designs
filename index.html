@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS Web Designs | Premium Web Development</title>
+    <style>
+        /* --- Reset & Core Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --border-color: #222222;
+            --accent-white: #ffffff;
+            --text-main: #f5f5f5;
+            --text-muted: #8a8a8a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 0;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeInDown 0.8s ease backwards;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--accent-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--accent-white);
+            border-radius: 4px;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem;
+            font-weight: 900;
+            letter-spacing: 0;
+            background: linear-gradient(135deg, #111, #000);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .logo span {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, padding-bottom 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-white);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(5, 5, 5, 1)), 
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            color: var(--accent-white);
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 span {
+            color: var(--text-muted);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+            animation-delay: 0.4s;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-white);
+            color: var(--bg-color);
+            padding: 0.9rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--accent-white);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeIn 1.2s ease backwards;
+            animation-delay: 0.6s;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Services Section --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 4rem;
+            color: var(--accent-white);
+        }
+
+        /* Perfectly Symmetrical 2x2 Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px; /* Constrains the width for ideal proportions */
+            margin: 0 auto;    /* Centers the entire grid container */
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem 3rem; /* Enhanced uniform padding */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Symmetrical staggered delay pattern */
+        .card:nth-child(1) { animation-delay: 0.4s; }
+        .card:nth-child(2) { animation-delay: 0.5s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.7s; }
+
+        .card:hover {
+            border-color: #444444;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent-white);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.15);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 4rem 3rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: #333333;
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent-white);
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.4rem;
+            font-weight: 400;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .email-link {
+            font-size: 1.8rem;
+            color: var(--accent-white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            border-bottom: 2px solid #222222;
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .email-link:hover {
+            border-color: var(--accent-white);
+            color: var(--text-muted);
+            transform: scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .email-link { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">SS</div>
+                SS <span>Web Designs</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>We Craft High-Performance <span>Modern Websites</span></h1>
+            <p>Bringing clean aesthetics and responsive code together to build tailored digital experiences for businesses and non-profits alike.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2 class="section-title">What We Do</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Web Design & Architecture</h3>
+                <p>Creating clean, structural, and visually striking layouts built exactly to match your brand's unique identity.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Responsive Development</h3>
+                <p>Ensuring your website looks flawless and functions seamlessly across all screens—from mobile devices to large desktops.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Performance Tuning</h3>
+                <p>Writing clean, optimized HTML and CSS code to guarantee ultra-fast loading times and accessibility for all visitors.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💎</div>
+                <h3>Branding & Integration</h3>
+                <p>Configuring custom domain pathways, integrating essential contact systems, and refining visual identity to align with your platform goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Working with SS Web Designs was incredibly smooth. They took our vision and turned it into a sleek, functional website that helps us connect with our community effortlessly. The coding is brilliant, clean, and perfectly suited to our needs."
+                </p>
+                <p class="testimonial-author">
+                    Ik Aas Foundation
+                    <span>Community Support Organization</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container contact-section">
+        <h2>Start A Project</h2>
+        <p>Have an idea or need a website refresh? Let's build something exceptional together.</p>
+        <a href="mailto:sukhmeetsindher06@gmail.com" class="email-link">sukhmeetsindher06@gmail.com</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SS Web Designs. Crafted with precision using modern HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
